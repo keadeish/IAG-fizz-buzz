@@ -1,29 +1,24 @@
 function fizzBuzz(n) {
-  if (typeof n !== "number") {
-    return "Please input an integer value.";
+  // Check if input is a positive integer
+  if (typeof n !== "number" || n < 1) {
+    return "Please input a positive integer value.";
   }
 
-  if (n < 1) {
-    return "Please input a value greater than 0.";
-  }
-  const numbersArray = [];
+  let result = "";
   for (let i = 1; i <= n; i++) {
-    numbersArray.push(i);
-  }
-  const fizzBuzzArray = [];
-
-  for (const number of numbersArray) {
-    if (number % 3 === 0 && number % 5 === 0) {
-      fizzBuzzArray.push("FizzBuzz");
-    } else if (number % 5 === 0) {
-      fizzBuzzArray.push("Buzz");
-    } else if (number % 3 === 0) {
-      fizzBuzzArray.push("Fizz");
+    // Check if i is divisible by both 3 and 5
+    if (i % 3 === 0 && i % 5 === 0) {
+      result += "FizzBuzz, ";
+    } else if (i % 5 === 0) {
+      result += "Buzz, ";
+    } else if (i % 3 === 0) {
+      result += "Fizz, ";
     } else {
-      fizzBuzzArray.push(number);
+      result += `${i}, `;
     }
   }
-  return fizzBuzzArray.join(", ");
+  // Trim the end ", "
+  return result.slice(0, -2);
 }
 
 module.exports = fizzBuzz;
